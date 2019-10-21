@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.18"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+    id 'idea'
+    id 'net.ltgt.apt' version '0.18'
+    id 'net.ltgt.apt-idea' version '0.18'
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+javafx {
+    version = "11.0.2"
+    modules = [
+            'javafx.controls',
+            'javafx.graphics',
+            'javafx.fxml',
+            'javafx.swing'
+    ]
+}
+
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:28.0-jre'
+    compile 'org.openjfx:javafx-graphics:11.0.2'
+    compile 'org.openjfx:javafx-controls:11.0.2'
+    compile 'org.openjfx:javafx-base:11.0.2'
+    compile 'org.openjfx:javafx-swing:11.0.2'
+
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+}
+
+application {
+    // Define the main class for the application
+    mainClassName = 'com.acme.app.Main'
+}
